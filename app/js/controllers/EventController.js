@@ -6,12 +6,12 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 13:35:03 by anonymous         #+#    #+#             */
-/*   Updated: 2016/06/13 14:15:47 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/06/13 14:48:23 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 'use strict';
 eventsApp.controller('EventController',
-    function EventController($scope, eventData) {
+    function EventController($scope, eventData,$anchorScroll) {
 
         // $scope.snippet = "<span style='color:red'>Hi There</span>";
         // $scope.boolValue = true;
@@ -32,7 +32,7 @@ eventsApp.controller('EventController',
         //     });
         eventData.getEvent()
             .$promise
-            .then(function(event) { $scope.event = event;console.log(event);} )
+            .then(function(event) { $scope.event = event;console.log(event); })
             .catch(function(response) { console.log(response); });
 
 
@@ -43,5 +43,9 @@ eventsApp.controller('EventController',
         $scope.downVoteSession = function(session) {
             session.upVoteCount--;
         };
+
+        $scope.scrollToSession = function() {
+            $anchorScroll();
+        }
 
     });

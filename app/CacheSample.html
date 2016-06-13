@@ -1,0 +1,53 @@
+<!--
+                                                          :::      ::::::::
+     CacheSample.html                                   :+:      :+:    :+:
+                                                      +:+ +:+         +:+
+     By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+
+                                                  +#+#+#+#+#+   +#+
+     Created: 2016/06/12 13:22:01 by anonymous         #+#    #+#
+     Updated: 2016/06/13 15:25:58 by anonymous        ###   ########.fr
+-->
+<!DOCTYPE Doctype html>
+<html lang="en" ng-app="eventsApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        Cache Sample
+    </title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+</head>
+
+<body ng-cloak="">
+    <div class="container">
+        <div ng-controller="CacheSampleController" style="padding:30px">
+            key:
+            <input type="text" ng-model="key" />
+            <br> Value:
+            <input type="text" ng-model="value">
+            <br>
+            <button type="button" class="btn" ng-click="addToCache(key,value)">Add To Cache</button>
+            <br>
+            <br>
+            <input type="text" ng-model="keyToRead">
+            <br>
+            <h3>Value from cache: {{readFromCache(keyToRead)}}</h3>
+            <h3>Cache Stats: {{getCacheStats()}}</h3>
+        </div>
+    </div>
+    <script src="lib/jquery.min.js">
+    </script>
+    <script src="lib/angular/angular.js">
+    </script>
+    <script src="lib/angular/angular-resource.js">
+    </script>
+    <script src="js/app.js">
+    </script>
+    <script src="js/controllers/CacheSampleController.js">
+    </script>
+    <script src="js/bootstrap.min.js">
+    </script>
+</body>
+
+</html>

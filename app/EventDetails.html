@@ -5,7 +5,7 @@
      By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+
                                                   +#+#+#+#+#+   +#+
      Created: 2016/06/12 13:22:01 by anonymous         #+#    #+#
-     Updated: 2016/06/13 14:07:37 by anonymous        ###   ########.fr
+     Updated: 2016/06/13 14:47:00 by anonymous        ###   ########.fr
 -->
 <!DOCTYPE Doctype html>
 <html lang="en" ng-app="eventsApp">
@@ -30,6 +30,9 @@
         </div>
         <div ng-controller="EventController">
             <img ng-src="{{event.imageUrl}}" alt="{{event.name}}">
+
+            <button type="button" class="btn btn-primary" ng-click="scrollToSession()">Scroll</button>
+
             <div class="row">
                 <div class="spann11">
                     <h2 ng-class="myClass" ng-bind-template="{{event.name | uppercase}} {{event.date | date:'mediumDate'}}"></h2>
@@ -71,7 +74,7 @@
                 <option selected value="Intermediate">Intermediate</option>
             </select>
             <ul class="thumbnails">
-                <li ng-repeat="session in event.sessions | orderBy:sortOrder | limitTo: 5 | filter: query">
+                <li ng-repeat="session in event.sessions | orderBy:sortOrder | limitTo: 5 | filter: query" class="span11" id="session{{session.id}}">
                     <div class="row session">
                         <div class="span0 well votingWidget">
                             <div class="votingButton" ng-click="upVoteSession(session)">
