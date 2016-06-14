@@ -6,10 +6,11 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 13:35:03 by anonymous         #+#    #+#             */
-/*   Updated: 2016/06/13 14:48:23 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/06/14 11:23:14 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 'use strict';
+
 eventsApp.controller('EventController',
     function EventController($scope, eventData,$anchorScroll) {
 
