@@ -6,13 +6,13 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 13:35:03 by anonymous         #+#    #+#             */
-/*   Updated: 2016/06/14 11:23:14 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/06/14 15:15:21 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 'use strict';
 
 eventsApp.controller('EventController',
-    function EventController($scope, eventData,$anchorScroll) {
+    function EventController($scope, eventData,$anchorScroll,$routeParams) {
 
         // $scope.snippet = "<span style='color:red'>Hi There</span>";
         // $scope.boolValue = true;
@@ -31,7 +31,7 @@ eventsApp.controller('EventController',
         //     .error(function(data, status, headers, config) {
         //         $log.warn(data, status, headers(), config);
         //     });
-        eventData.getEvent()
+        eventData.getEvent($routeParams.eventId)
             .$promise
             .then(function(event) { $scope.event = event;console.log(event); })
             .catch(function(response) { console.log(response); });
