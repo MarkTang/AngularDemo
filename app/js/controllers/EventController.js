@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/12 13:35:03 by anonymous         #+#    #+#             */
-/*   Updated: 2016/06/14 15:38:43 by anonymous        ###   ########.fr       */
+/*   Updated: 2016/06/14 16:36:30 by anonymous        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 'use strict';
@@ -35,7 +35,10 @@ eventsApp.controller('EventController',
         //     .$promise
         //     .then(function(event) { $scope.event = event;console.log(event); })
         //     .catch(function(response) { console.log(response); });
-        $scope.event = eventData.getEvent($routeParams.eventId);
+
+        // $scope.event = eventData.getEvent($routeParams.eventId);
+        $scope.event = $route.current.locals.event;
+
         console.log($route.current.pathParams.eventId);
         $scope.reload = function() {
             $route.reload();

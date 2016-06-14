@@ -12,8 +12,13 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']) //'ngSani
                 controller: "EventListController"
             })
             .when("/event/:eventId", {
-                templateUrl: "templates/EventDetails.html",
-                controller: "EventController"
+                templateUrl: "/templates/EventDetails.html",
+                controller: "EventController",
+                resolve: {
+                    event: function($route, eventData) {
+                        return eventData.getEvent($route.current.pathParams.eventId).$promise;
+                    }
+                }
             })
             .otherwise({ redirectTo: "/events" });
 
