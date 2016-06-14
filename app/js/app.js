@@ -1,6 +1,6 @@
 'use strict';
 
-var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']) //'ngSanitize', "ngCookies"
+var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']) //'ngSanitize', 'ngCookies'
     .config(function($routeProvider) {
         $routeProvider
             .when("/newEvent", {
