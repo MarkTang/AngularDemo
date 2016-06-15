@@ -4,7 +4,8 @@ eventsApp.directive("greeting", function() {
         return {
             restrict: "E",
             replace: true,
-            template: "<button class='btn' ng-click='sayHello()'>Say Hello</button>",
+            transclude: true,
+            template: "<div><button class='btn' ng-click='sayHello()'>Say Hello</button><div ng-transclude></div></div>",
             controller: function($scope) {
                 var greetings = ["Hello"];
                 $scope.sayHello = function() {
@@ -19,7 +20,7 @@ eventsApp.directive("greeting", function() {
     .directive("germany", function() {
         return {
             restrict: "A",
-            require: "greeting",
+            require: "^greeting",
             link: function(scope, element, attrs, controller) {
                 controller.addGreeting(" germany");
             }
@@ -28,7 +29,7 @@ eventsApp.directive("greeting", function() {
     .directive("finnish", function() {
         return {
             restrict: "A",
-            require: "greeting",
+            require: "^greeting",
             link: function(scope, element, attrs, controller) {
                 controller.addGreeting(" Hei~");
             }
