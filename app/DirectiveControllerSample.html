@@ -7,9 +7,15 @@
 </head>
 
 <body ng-cloak="">
-    <greeting>
+    <!--     <greeting>
         <div germany finnish></div>
-    </greeting>
+    </greeting> -->
+
+    <!-- <div repeat-x="5">Hello</div> -->
+
+    Text to repeat: <input type="text" ng-model="text">
+    <div repeat-x="5" text="{{text}}">{{text}}</div>
+
     <script src="lib/jquery.min.js"></script>
     <script src="lib/underscore-1.4.4.min.js"></script>
     <script src="lib/bootstrap.min.js"></script>
@@ -22,6 +28,7 @@
     <script src="js/services/EventData.js"></script>
     <script src="js/filters.js"></script>
     <script src="js/directives/greeting.js"></script>
+    <script src="js/directives/repeatx.js"></script>
 </body>
 
 </html>
