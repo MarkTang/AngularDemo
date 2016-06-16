@@ -1,7 +1,8 @@
 'use strict';
 
 var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']) //'ngSanitize', 'ngCookies'
-    .config(function($routeProvider, $locationProvider) {
+    .config(function($routeProvider, $locationProvider, $provide) {
+
         $routeProvider
             .when("/newEvent", {
                 templateUrl: "templates/NewEvent.html",
@@ -28,7 +29,19 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute']) //'ngSani
 
         $locationProvider.html5Mode(true);
 
+        $provide.provider("MathService", function() {
+            this.$get = function() {
+                var factory = {};
+
+                factory.multiply = function(a, b) {
+                    return a * b;
+                }
+                return factory;
+            };
+        });
     })
+    .value("defaultInput", 5)
+    
     .factory('myCache', function($cacheFactory) {
         return $cacheFactory("myCache", { capacity: 3 });
     });

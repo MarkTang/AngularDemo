@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eventsApp">
+
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS Dependency Injection</title>
+</head>
+
+<body>
+    <h2>AngularJS Simple Application</h2>
+    <div ng-controller="CalcController">
+        <p>Pls input a number:
+            <input type="number" ng-model="number" />
+        </p>
+        <button ng-click="square()">X<sup>2</sup></button>
+        <p>Result: {{result}}</p>
+    </div>
+    <script src="lib/angular/angular.js"></script>
+<!--     <script src="js/app.js"></script>
+    <script src="js/controllers/CalcController.js"></script>
+    <script src="js/services/CalcService.js"></script> -->
+    <script>
+    var eventsApp = angular.module("eventsApp", []);
+
+    eventsApp.config(function($provide) {
+        $provide.provider('MathService', function() {
+            this.$get = function() {
+                var factory = {};
+
+                factory.multiply = function(a, b) {
+                    return a * b;
+                }
+                return factory;
+            };
+        });
+    });
+
+    eventsApp.value("defaultInput", 5);
+
+    eventsApp.factory('MathService', function() {
+        var factory = {};
+
+        factory.multiply = function(a, b) {
+            return a * b;
+        }
+        return factory;
+    });
+
+    eventsApp.service('CalcService', function(MathService) {
+        this.square = function(a) {
+            return MathService.multiply(a, a);
+        }
+    });
+
+    eventsApp.controller('CalcController', function($scope, CalcService, defaultInput) {
+        $scope.number = defaultInput;
+        $scope.result = CalcService.square($scope.number);
+
+        $scope.square = function() {
+            $scope.result = CalcService.square($scope.number);
+        }
+    });
+    </script>
+    <script src="lib/angular/angular.js"></script>
+</body>
+
+</html>
